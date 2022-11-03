@@ -86,3 +86,32 @@ def display_dice(dice):
 
 die_values = roll_dice()
 display_dice(die_values)
+
+
+sum_of_dices = sum(die_values)
+# if sum_of_dices == 7 or sum_of_dices == 11:
+if sum_of_dices in (7, 11):
+    game_status = "WON"
+elif sum_of_dices in (2, 3, 12):
+    game_status = "LOST"
+else:
+    game_status = 'CONTINUE'
+    my_point = sum_of_dices
+    print('my point is : ', my_point)
+
+while game_status == 'CONTINUE':
+    print('press enter to continue!!!')
+    input("> ")
+    die_values = roll_dice()
+    display_dice(die_values)
+    sum_of_dices = sum(die_values)
+    if sum_of_dices == my_point:
+        game_status = "WON"
+    elif sum_of_dices == 7:
+        game_status = "LOST"
+
+
+if game_status == "WON":
+    print("you are the winner!!!")
+else:
+    print("you lose!!!!!")
